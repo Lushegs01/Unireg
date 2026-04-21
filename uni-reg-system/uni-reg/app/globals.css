@@ -1,0 +1,204 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Mono:wght@400;500&display=swap');
+
+@layer base {
+  :root {
+    --font-display: 'DM Serif Display';
+    --font-body: 'DM Sans';
+    --font-mono: 'DM Mono';
+
+    --background: 40 20% 98%;
+    --foreground: 220 25% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 25% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 25% 12%;
+
+    --primary: 220 70% 20%;
+    --primary-foreground: 40 30% 95%;
+
+    --secondary: 40 30% 92%;
+    --secondary-foreground: 220 25% 20%;
+
+    --muted: 220 15% 94%;
+    --muted-foreground: 220 15% 48%;
+
+    --accent: 42 90% 48%;
+    --accent-foreground: 220 70% 15%;
+
+    --destructive: 4 86% 58%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 152 60% 38%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 220 70% 15%;
+
+    --border: 220 15% 88%;
+    --input: 220 15% 88%;
+    --ring: 220 70% 20%;
+
+    --radius: 0.5rem;
+
+    /* Custom university tokens */
+    --uni-navy: 220 70% 18%;
+    --uni-gold: 42 90% 48%;
+    --uni-cream: 42 30% 96%;
+    --sidebar-width: 240px;
+    --sidebar-collapsed-width: 64px;
+  }
+
+  .dark {
+    --background: 220 25% 9%;
+    --foreground: 40 20% 94%;
+
+    --card: 220 25% 11%;
+    --card-foreground: 40 20% 94%;
+
+    --popover: 220 25% 11%;
+    --popover-foreground: 40 20% 94%;
+
+    --primary: 42 90% 55%;
+    --primary-foreground: 220 70% 12%;
+
+    --secondary: 220 20% 16%;
+    --secondary-foreground: 40 20% 90%;
+
+    --muted: 220 20% 14%;
+    --muted-foreground: 220 15% 56%;
+
+    --accent: 42 90% 55%;
+    --accent-foreground: 220 70% 12%;
+
+    --destructive: 4 72% 52%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 152 55% 45%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 90% 55%;
+    --warning-foreground: 220 70% 12%;
+
+    --border: 220 20% 18%;
+    --input: 220 20% 18%;
+    --ring: 42 90% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  h1, h2, h3 {
+    font-family: var(--font-display), Georgia, serif;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display), Georgia, serif;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* University crest gradient */
+  .uni-gradient {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--uni-navy)) 0%,
+      hsl(220 60% 28%) 60%,
+      hsl(var(--uni-gold)) 100%
+    );
+  }
+
+  /* Glass card effect */
+  .glass {
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+  }
+
+  /* Sidebar gradient */
+  .sidebar-gradient {
+    background: linear-gradient(
+      180deg,
+      hsl(220 70% 14%) 0%,
+      hsl(220 65% 18%) 50%,
+      hsl(220 60% 22%) 100%
+    );
+  }
+
+  /* Subtle paper texture */
+  .paper-texture {
+    background-image:
+      radial-gradient(circle at 1px 1px, hsl(220 15% 88% / 0.4) 1px, transparent 0);
+    background-size: 24px 24px;
+  }
+
+  /* Status dot */
+  .status-dot::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    margin-right: 6px;
+    background: currentColor;
+  }
+
+  /* Shimmer loading */
+  .shimmer {
+    background: linear-gradient(
+      90deg,
+      hsl(var(--muted)) 25%,
+      hsl(var(--muted-foreground) / 0.1) 50%,
+      hsl(var(--muted)) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+
+  /* Fade in stagger */
+  .animate-fade-in-1 { animation: fade-in 0.4s ease-out 0.05s forwards; opacity: 0; }
+  .animate-fade-in-2 { animation: fade-in 0.4s ease-out 0.1s forwards; opacity: 0; }
+  .animate-fade-in-3 { animation: fade-in 0.4s ease-out 0.15s forwards; opacity: 0; }
+  .animate-fade-in-4 { animation: fade-in 0.4s ease-out 0.2s forwards; opacity: 0; }
+  .animate-fade-in-5 { animation: fade-in 0.4s ease-out 0.25s forwards; opacity: 0; }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--border));
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.5);
+}
+
+/* Focus visible ring */
+:focus-visible {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 2px;
+  border-radius: 4px;
+}
